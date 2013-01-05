@@ -14,9 +14,11 @@ declare function stats:colnames ($data) {
 };
 
 declare function stats:remove-missing-values($data as element(row)*) as element(row) * {
-   for $row in $data
-   return 
-      element row {$row/*[not (. = "NA")]}
+   for $row in $data return element row {$row/*[not (. = "NA")]}
+};
+
+declare function stats:remove-missing-rows($data as element(row)*) as element(row) * {
+   $data[not (* = "NA")]
 };
 
 
